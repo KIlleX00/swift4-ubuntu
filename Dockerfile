@@ -17,17 +17,15 @@ WORKDIR ${WORK_DIR}
 # Linux OS utils and libraries and set clang 3.8 as default
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   build-essential \
-  clang-3.8 \
+  clang \
   git \
   libpython2.7 \
   libicu-dev \
   wget \
   libcurl4-openssl-dev \
-  vim \
+  libxml2 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-  && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 100 \
-  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.8 100 \
   && echo "set -o vi" >> /root/.bashrc
 
 # Install Swift compiler
