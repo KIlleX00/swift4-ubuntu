@@ -7,8 +7,8 @@ LABEL Description="Linux Ubuntu 16.04 image with the Swift 4.0 binaries and tool
 USER root
 
 # Set environment variables for image
-ENV SWIFT_FILE swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-13-a-ubuntu16.04
-ENV SWIFT_URL https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-13-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-13-a-ubuntu16.04.tar.gz
+ENV SWIFT_FILE swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a-ubuntu16.04
+ENV SWIFT_URL https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a-ubuntu16.04.tar.gz
 ENV WORK_DIR /
 
 # Set WORKDIR
