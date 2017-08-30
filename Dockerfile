@@ -7,8 +7,8 @@ LABEL Description="Linux Ubuntu 16.04 image with the Swift 4.0 binaries and tool
 USER root
 
 # Set environment variables for image
-ENV SWIFT_FILE swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a-ubuntu16.04
-ENV SWIFT_URL https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-04-a-ubuntu16.04.tar.gz
+ENV SWIFT_FILE swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-27-a-ubuntu16.04
+ENV SWIFT_URL https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-27-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-08-27-a-ubuntu16.04.tar.gz
 ENV WORK_DIR /
 
 # Set WORKDIR
@@ -17,15 +17,17 @@ WORKDIR ${WORK_DIR}
 # Linux OS utils and libraries and set clang 3.8 as default
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   build-essential \
-  clang \
+  clang-3.8 \
   git \
   libpython2.7 \
   libicu-dev \
   wget \
   libcurl4-openssl-dev \
-  libxml2 \
+  vim \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 100 \
+  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.8 100 \
   && echo "set -o vi" >> /root/.bashrc
 
 # Install Swift compiler
