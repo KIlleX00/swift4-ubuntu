@@ -1,14 +1,14 @@
-# Dockerfile to build a Docker image with the Swift 4.0 tools and binaries and
+# Dockerfile to build a Docker image with the Swift 4.2 tools and binaries and
 # its dependencies.
 
 FROM ubuntu:16.04
 MAINTAINER KilleX
-LABEL Description="Linux Ubuntu 16.04 image with the Swift 4.0 binaries and tools."
+LABEL Description="Linux Ubuntu 16.04 image with the Swift 4.2 binaries and tools."
 USER root
 
 # Set environment variables for image
-ENV SWIFT_FILE swift-4.0-RELEASE-ubuntu16.04
-ENV SWIFT_URL https://swift.org/builds/swift-4.0-release/ubuntu1604/swift-4.0-RELEASE/swift-4.0-RELEASE-ubuntu16.04.tar.gz
+ENV SWIFT_FILE swift-4.2-DEVELOPMENT-SNAPSHOT-2018-06-05-a-ubuntu16.04
+ENV SWIFT_URL https://swift.org/builds/swift-4.2-branch/ubuntu1604/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-06-05-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-06-05-a-ubuntu16.04.tar.gz
 ENV WORK_DIR /
 
 # Set WORKDIR
@@ -43,6 +43,7 @@ RUN wget $SWIFT_URL \
       '1BE1 E29A 084C B305 F397  D62A 9F59 7F4D 21A5 6D5F' \
       'A3BA FD35 56A5 9079 C068  94BD 63BC 1CFE 91D3 06C6' \
       '5E4D F843 FB06 5D7F 7E24  FBA2 EF54 30F0 71E1 B235' \
+      '8513 444E 2DA3 6B7C 1659  AF4D 7638 F1FB 2B2B 08C4' \
   && gpg --keyserver hkp://pool.sks-keyservers.net --refresh-keys  \
   && gpg --verify $SWIFT_FILE.tar.gz.sig \
   && tar xzvf $SWIFT_FILE.tar.gz --strip-components=1 \
